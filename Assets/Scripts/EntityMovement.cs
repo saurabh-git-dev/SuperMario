@@ -39,7 +39,6 @@ public class EntityMovement : MonoBehaviour
         velocity.x = direction.x * speed;
         velocity.y += Physics2D.gravity.y * Time.fixedDeltaTime;
 
-        rigidbody.MovePosition(rigidbody.position + velocity * Time.fixedDeltaTime);
         
         if (rigidbody.Raycast(direction)) {
             direction = -direction;
@@ -48,6 +47,8 @@ public class EntityMovement : MonoBehaviour
         if (rigidbody.Raycast(Vector2.down)) {
             velocity.y = Mathf.Max(velocity.y, 0f);
         }
+        
+        rigidbody.MovePosition(rigidbody.position + velocity * Time.fixedDeltaTime);
 
         if (direction.x > 0f) {
             transform.localEulerAngles = new Vector3(0f, 180f, 0f);

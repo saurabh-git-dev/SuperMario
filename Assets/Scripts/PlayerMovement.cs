@@ -104,13 +104,13 @@ public class PlayerMovement : MonoBehaviour
                 IsJumping = true;
             }
         } 
-        else if (collision.gameObject.layer != LayerMask.NameToLayer("PowerUp")) 
-        {
-            if (transform.DotTest(collision.transform, Vector2.up))
-            {
-                velocity.y = 0f;
-            }
-        }
+        // else if (collision.gameObject.layer != LayerMask.NameToLayer("PowerUp")) 
+        // {
+        //     if (transform.DotTest(collision.transform, Vector2.up))
+        //     {
+        //         velocity.y = 0f;
+        //     }
+        // }
     }
 }
 

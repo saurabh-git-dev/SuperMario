@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     public int Stage { get; private set; }
     public int Lives { get; private set; }
 
+    public int Coins { get; private set; }
+
     private void Awake()
     {
         if (Instance == null) {
@@ -80,6 +82,21 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         NewGame();
+    }
+
+    public void AddCoin()
+    {
+        Coins++;
+
+        if (Coins >= 100) {
+            AddLives(1);
+            Coins -= 100;
+        }
+    }
+
+    public void AddLives(int amount)
+    {
+        Lives += amount;
     }
 
     public void QuitGame()
