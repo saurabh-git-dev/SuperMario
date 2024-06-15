@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerSpriteRenderer : MonoBehaviour
 {
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     private PlayerMovement playerMovement;
 
     public Sprite idle;

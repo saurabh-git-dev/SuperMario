@@ -12,22 +12,27 @@ public class Player : MonoBehaviour
     public bool IsBig => bigRenderer.enabled;
     public bool IsSmall => smallRenderer.enabled;
     public bool IsDead => deathAnimation.enabled;
+    public bool IsStartPower { get; private set; }
 
     private void Awake()
     {
         deathAnimation = GetComponent<DeathAnimation>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+        activeRenderer = smallRenderer;
     }
 
     public void Hit()
     {
-        if (IsBig)
+        if (!IsStartPower && !IsDead)
         {
-            Shrink();
-        }
-        else
-        {
-            Die();
+            if (IsBig)
+            {
+                Shrink();
+            }
+            else
+            {
+                Die();
+            }
         }
     }
 
@@ -45,6 +50,10 @@ public class Player : MonoBehaviour
 
     public void Grow()
     {
+        if (IsBig) {
+            return;
+        };
+
         smallRenderer.enabled = false;
         bigRenderer.enabled = true;
         activeRenderer = bigRenderer;
@@ -81,6 +90,37 @@ public class Player : MonoBehaviour
 
         activeRenderer.enabled = true;
 
+    }
+
+    public void ActivateStarPower()
+    {
+        StartCoroutine(StarPowerAnimation());
+    }
+
+    public IEnumerator StarPowerAnimation(float duration = 10f)
+    {
+        IsStartPower = true;
+        
+        PlayerMovement playerMovement = gameObject.GetComponent<PlayerMovement>();
+        playerMovement.moveSpeed += 4;
+
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {   
+            elapsed += Time.deltaTime;
+
+            if (Time.frameCount % 6 == 0)
+            {
+                activeRenderer.spriteRenderer.color = Random.ColorHSV(0f, 1f, 1f, 1f, 1f, 1f);
+            }
+
+            yield return null;
+        }
+
+        playerMovement.moveSpeed -= 4;
+        activeRenderer.spriteRenderer.color = Color.white;
+        IsStartPower = false;
     }
 
     private void Die()
