@@ -34,7 +34,6 @@ public class HardBlockHit : MonoBehaviour
 
             if (item != null)
             {
-                // Adds Coin and increments the coin count
                 Instantiate(item, transform.position, Quaternion.identity);
             }
 

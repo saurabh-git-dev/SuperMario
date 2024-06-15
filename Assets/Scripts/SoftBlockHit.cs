@@ -29,7 +29,6 @@ public class SoftBlockHit : MonoBehaviour
         if (MaxHitPoints != 0 )
         {
             if (item != null) {
-                // Adds Coin and increments the coin count
                 Instantiate(item, transform.position, Quaternion.identity);
             }
             StartCoroutine(Bounce());

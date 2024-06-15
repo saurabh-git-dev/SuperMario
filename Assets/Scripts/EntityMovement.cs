@@ -6,6 +6,8 @@ public class EntityMovement : MonoBehaviour
     public Vector2 direction = Vector2.right;
     private new Rigidbody2D rigidbody;
     private Vector2 velocity;
+    public float RayCastCircleRadius = 1f;
+    public float RayCastDisatnce = 0.375f;
 
     private void Awake()
     {
@@ -44,7 +46,7 @@ public class EntityMovement : MonoBehaviour
             direction = -direction;
         }
 
-        if (rigidbody.Raycast(Vector2.down)) {
+        if (rigidbody.Raycast(Vector2.down, RayCastCircleRadius, RayCastDisatnce)) {
             velocity.y = Mathf.Max(velocity.y, 0f);
         }
         

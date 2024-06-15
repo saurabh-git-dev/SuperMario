@@ -5,7 +5,6 @@ public class BlockItem : MonoBehaviour
 {
     private void Start()
     {
-
         StartCoroutine(Animate());
     }
     
@@ -21,7 +20,7 @@ public class BlockItem : MonoBehaviour
         triggerCollider.enabled = false;
         spriteRenderer.enabled = false;
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.2f);
 
         spriteRenderer.enabled = true;
 
