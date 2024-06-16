@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private new Camera camera;
+    private new Collider2D collider;
     private new Rigidbody2D rigidbody;
 
     private Vector2 velocity;
@@ -19,13 +20,29 @@ public class PlayerMovement : MonoBehaviour
     public bool IsJumping { get; private set; }
 
     public bool IsSliding => (velocity.x < 0f && inputAxis > 0f) || (velocity.x > 0f && inputAxis < 0f);
-     public bool IsRunning => Mathf.Abs(velocity.x) > 0.25f || Mathf.Abs(inputAxis) > 0.25f;
-
+    public bool IsRunning => Mathf.Abs(velocity.x) > 0.25f || Mathf.Abs(inputAxis) > 0.25f;
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
         camera = Camera.main;
+    }
+
+    private void OnEnable()
+    {
+        rigidbody.isKinematic = false;
+        collider.enabled = true;
+        velocity = Vector2.zero;
+        IsJumping = false;
+    }
+
+    private void OnDisable()
+    {
+        rigidbody.isKinematic = true;
+        collider.enabled = false;
+        velocity = Vector2.zero;
+        IsJumping = false;
     }
 
     private void Update()
