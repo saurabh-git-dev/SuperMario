@@ -146,3 +146,4 @@ MonoBehaviour:
   MaxHitPoints: 0
   emptyBlock: {fileID: 0}
   item: {fileID: 0}
+  BreakGameObject: {fileID: 1864948549894928830, guid: bef5f6030ea9a16418a46c75b8e225e7, type: 3}

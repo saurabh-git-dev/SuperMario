@@ -10,6 +10,7 @@ public class SoftBlockHit : MonoBehaviour
     private bool animating;
 
     public GameObject item;
+    public GameObject BreakGameObject;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -34,7 +35,13 @@ public class SoftBlockHit : MonoBehaviour
             StartCoroutine(Bounce());
 
             MaxHitPoints--;
-        } else if (player.IsBig)
+        } 
+        else if (player.IsBig && BreakGameObject != null)
+        {
+            Instantiate(BreakGameObject, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        } 
+        else
         {
             StartCoroutine(Bounce());
         }
