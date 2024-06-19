@@ -115,10 +115,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smallRenderer: {fileID: 2494366829033508300}
   bigRenderer: {fileID: 8537195085492758330}
-  GrowClip: {fileID: 8300000, guid: 5859757db7f68614da840f46b63b9380, type: 3}
-  ShrinkClip: {fileID: 0}
-  DieClip: {fileID: 8300000, guid: acad984255c34d14eaf940b5e2f564f3, type: 3}
-  StarPowerClip: {fileID: 0}
+  growClip: {fileID: 8300000, guid: 5859757db7f68614da840f46b63b9380, type: 3}
+  shrinkClip: {fileID: 0}
+  dieClip: {fileID: 8300000, guid: acad984255c34d14eaf940b5e2f564f3, type: 3}
+  starPowerClip: {fileID: 0}
 --- !u!114 &-6822263905112656679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

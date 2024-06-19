@@ -15,10 +15,10 @@ public class Player : MonoBehaviour
     public bool IsDead => deathAnimation.enabled;
     public bool IsStartPower { get; private set; }
 
-    public AudioClip GrowClip;
-    public AudioClip ShrinkClip;
-    public AudioClip DieClip;
-    public AudioClip StarPowerClip;
+    public AudioClip growClip;
+    public AudioClip shrinkClip;
+    public AudioClip dieClip;
+    public AudioClip starPowerClip;
 
 
     private void Awake()
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
 
         StartCoroutine(ScaleAnimation());
 
-        audioSource.clip = AudioManager.Instance.ShrinkClip;
+        audioSource.clip = shrinkClip;
         audioSource.volume = 1f;
         audioSource.Play();
     }
@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
         
         StartCoroutine(ScaleAnimation());
 
-        audioSource.clip = AudioManager.Instance.GrowClip;
+        audioSource.clip = growClip;
         audioSource.volume = 1f;
         audioSource.Play();
     }
@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
 
         GameManager.Instance.ResetLevel(3f);
 
-        audioSource.clip = AudioManager.Instance.DieClip;
+        audioSource.clip = dieClip;
         audioSource.volume = 1f;
         audioSource.Play();
     }

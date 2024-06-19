@@ -239,6 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 609293d73fe98044794353d1a87c7c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinSound: {fileID: 8300000, guid: 71e7a502dce4d1348976352081793a54, type: 3}
+  extraLifeSound: {fileID: 8300000, guid: 07c034cdc952960418af067e0e2fec78, type: 3}
   type: 2
 --- !u!82 &8711386397230023318
 AudioSource:
@@ -251,7 +253,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

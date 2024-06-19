@@ -239,8 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 609293d73fe98044794353d1a87c7c39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinSound: {fileID: 0}
-  extraLifeSound: {fileID: 0}
+  coinSound: {fileID: 8300000, guid: 71e7a502dce4d1348976352081793a54, type: 3}
+  extraLifeSound: {fileID: 8300000, guid: 07c034cdc952960418af067e0e2fec78, type: 3}
   type: 3
 --- !u!82 &5347135718824093997
 AudioSource:

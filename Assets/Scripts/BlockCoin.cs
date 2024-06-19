@@ -19,6 +19,7 @@ public class BlockCoin : MonoBehaviour
         StartCoroutine(Bounce());
 
         audioSource.clip = coinSound;
+        audioSource.volume = 0.75f;
         audioSource.Play();
     }
 

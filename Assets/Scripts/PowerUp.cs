@@ -32,15 +32,16 @@ public class PowerUp : MonoBehaviour
 
     private void Collect(GameObject player)
     {
+        audioSource.volume = 0.75f;
         switch (type)
         {
             case Type.Coin:
-                GameManager.Instance.AddCoin();
                 audioSource.clip = coinSound;
+                GameManager.Instance.AddCoin();
                 break;
             case Type.ExtraLife:
-                GameManager.Instance.AddLives(1);
                 audioSource.clip = extraLifeSound;
+                GameManager.Instance.AddLives(1);
                 break;
             case Type.MagicMushroom:
                 player.GetComponent<Player>().Grow();
@@ -49,9 +50,13 @@ public class PowerUp : MonoBehaviour
                 player.GetComponent<Player>().ActivateStarPower();
                 break;
         }
-        
+
         audioSource.Play();
 
-        Destroy(gameObject);
+        // hide the power up
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+
+        Destroy(gameObject, 2f);
     }
 }
