@@ -8,6 +8,7 @@ public class PlayerSpriteRenderer : MonoBehaviour
     public Sprite idle;
     public Sprite jump;
     public Sprite slide;
+    public Sprite down;
     public AnimatedSprite run;
 
     private void Awake()
@@ -35,6 +36,8 @@ public class PlayerSpriteRenderer : MonoBehaviour
             spriteRenderer.sprite = jump;
         } else if (playerMovement.IsSliding) {
             spriteRenderer.sprite = slide;
+        } else if (playerMovement.IsDown) {
+            spriteRenderer.sprite = down;
         } else if (!playerMovement.IsRunning) {
             spriteRenderer.sprite = idle;
         }

@@ -1,6 +1,7 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public float Gravity => -2f * maxJumpHeight / Mathf.Pow(maxJumpTime / 2f, 2);
 
     public bool IsGrounded { get; private set; }
+    public bool IsDown { get; private set; }
     public bool IsJumping { get; private set; }
 
     public bool IsSliding => (velocity.x < 0f && inputAxis > 0f) || (velocity.x > 0f && inputAxis < 0f);
@@ -97,6 +99,11 @@ public class PlayerMovement : MonoBehaviour
             audioSource.clip = player.IsBig ? bigJumpSound : smallJumpSound;
             audioSource.volume = 0.5f;
             audioSource.Play();
+        } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+            IsDown = true;
+            velocity.y = 0f;
+        } else if (Input.GetKeyUp(KeyCode.DownArrow)) {
+            IsDown = false;
         }
     }
 
