@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
         StartCoroutine(ScaleAnimation());
 
         audioSource.clip = AudioManager.Instance.ShrinkClip;
+        audioSource.volume = 1f;
         audioSource.Play();
     }
 
@@ -75,6 +76,7 @@ public class Player : MonoBehaviour
         StartCoroutine(ScaleAnimation());
 
         audioSource.clip = AudioManager.Instance.GrowClip;
+        audioSource.volume = 1f;
         audioSource.Play();
     }
 
@@ -150,6 +152,7 @@ public class Player : MonoBehaviour
         GameManager.Instance.ResetLevel(3f);
 
         audioSource.clip = AudioManager.Instance.DieClip;
+        audioSource.volume = 1f;
         audioSource.Play();
     }
 }

@@ -6065,54 +6065,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3493393347609731090, guid: 5c5816398b35b3645958fcb1086194d0, type: 3}
   m_PrefabInstance: {fileID: 1066428299}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1072744771
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1072744773}
-  - component: {fileID: 1072744772}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1072744772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072744771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce613ea16e69bdf4c8fa28e80dcad058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GrowClip: {fileID: 8300000, guid: 5859757db7f68614da840f46b63b9380, type: 3}
-  ShrinkClip: {fileID: 0}
-  DieClip: {fileID: 8300000, guid: acad984255c34d14eaf940b5e2f564f3, type: 3}
-  StartPowerClip: {fileID: 0}
---- !u!4 &1072744773
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072744771}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2028716, y: -0.90406495, z: -0.01666173}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1081741096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11891,4 +11843,3 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1299875236}
   - {fileID: 487360209}
-  - {fileID: 1072744773}

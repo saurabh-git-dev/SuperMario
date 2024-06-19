@@ -95,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
 
             Player player = GetComponent<Player>();
             audioSource.clip = player.IsBig ? bigJumpSound : smallJumpSound;
+            audioSource.volume = 0.5f;
             audioSource.Play();
         }
     }

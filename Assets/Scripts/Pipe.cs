@@ -8,6 +8,13 @@ public class Pipe : MonoBehaviour
     public Vector3 enterDirection = Vector3.down;
     public Vector3 exitDirection = Vector3.zero;
     public Transform Connection;
+    private AudioSource audioSource;
+    public AudioClip enterSound;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerStay2D(Collider2D collider)
     {
@@ -49,6 +56,9 @@ public class Pipe : MonoBehaviour
 
     private IEnumerator Move(Transform player, Vector3 endPosition, Vector3 endScale)
     {
+        audioSource.clip = enterSound;
+        audioSource.Play();
+
         float elapsedTime = 0f;
         float duration = 1f;
 
