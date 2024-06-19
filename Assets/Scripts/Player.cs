@@ -82,11 +82,16 @@ public class Player : MonoBehaviour
     {
         PlayerMovement playerMovement = gameObject.GetComponent<PlayerMovement>();
 
-        if (playerMovement.IsDown || IsSmall)
+        if (playerMovement.IsDown)
         {   
             capsuleCollider.size = new Vector2(0.9f, 1f);
+            capsuleCollider.offset = new Vector2(0, -0.1f);
+        } else if (IsSmall)
+        {
+            capsuleCollider.size = new Vector2(0.9f, 1f);
             capsuleCollider.offset = new Vector2(0, 0f);
-        } else
+        }
+        else
         {
             capsuleCollider.size = new Vector2(0.9f, 2f);
             capsuleCollider.offset = new Vector2(0, 0.5f);
