@@ -50,8 +50,7 @@ public class Player : MonoBehaviour
         smallRenderer.enabled = true;
         activeRenderer = smallRenderer;
 
-        capsuleCollider.size = new Vector2(0.9f, 1f);
-        capsuleCollider.offset = new Vector2(0, 0f);
+        UpdateCollider();
 
         StartCoroutine(ScaleAnimation());
 
@@ -70,14 +69,28 @@ public class Player : MonoBehaviour
         bigRenderer.enabled = true;
         activeRenderer = bigRenderer;
 
-        capsuleCollider.size = new Vector2(0.9f, 2f);
-        capsuleCollider.offset = new Vector2(0, 0.5f);
+        UpdateCollider();
         
         StartCoroutine(ScaleAnimation());
 
         audioSource.clip = growClip;
         audioSource.volume = 1f;
         audioSource.Play();
+    }
+
+    public void UpdateCollider()
+    {
+        PlayerMovement playerMovement = gameObject.GetComponent<PlayerMovement>();
+
+        if (playerMovement.IsDown || IsSmall)
+        {   
+            capsuleCollider.size = new Vector2(0.9f, 1f);
+            capsuleCollider.offset = new Vector2(0, 0f);
+        } else
+        {
+            capsuleCollider.size = new Vector2(0.9f, 2f);
+            capsuleCollider.offset = new Vector2(0, 0.5f);
+        }
     }
 
     private IEnumerator ScaleAnimation()

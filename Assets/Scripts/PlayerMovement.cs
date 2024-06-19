@@ -1,7 +1,4 @@
-
-using System;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -90,20 +87,23 @@ public class PlayerMovement : MonoBehaviour
         velocity.y = Mathf.Max(velocity.y, 0f);
         IsJumping = velocity.y > 0f;
         
+        Player player = GetComponent<Player>();
+
         if (Input.GetButtonDown("Jump"))
         {
             velocity.y = JumpForce;
             IsJumping = true;
 
-            Player player = GetComponent<Player>();
             audioSource.clip = player.IsBig ? bigJumpSound : smallJumpSound;
             audioSource.volume = 0.5f;
             audioSource.Play();
-        } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+        } else if (Input.GetKeyDown(KeyCode.DownArrow) && player.IsBig) {
             IsDown = true;
             velocity.y = 0f;
+            player.UpdateCollider();
         } else if (Input.GetKeyUp(KeyCode.DownArrow)) {
             IsDown = false;
+            player.UpdateCollider();
         }
     }
 
