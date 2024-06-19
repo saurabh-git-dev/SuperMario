@@ -22,10 +22,17 @@ public class PlayerMovement : MonoBehaviour
     public bool IsSliding => (velocity.x < 0f && inputAxis > 0f) || (velocity.x > 0f && inputAxis < 0f);
     public bool IsRunning => Mathf.Abs(velocity.x) > 0.25f || Mathf.Abs(inputAxis) > 0.25f;
 
+    private AudioSource audioSource;
+
+    public AudioClip smallJumpSound;
+
+    public AudioClip bigJumpSound;
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
+        audioSource = GetComponent<AudioSource>();
         camera = Camera.main;
     }
 
@@ -85,6 +92,10 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = JumpForce;
             IsJumping = true;
+
+            Player player = GetComponent<Player>();
+            audioSource.clip = player.IsBig ? bigJumpSound : smallJumpSound;
+            audioSource.Play();
         }
     }
 

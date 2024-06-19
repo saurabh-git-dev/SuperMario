@@ -8,16 +8,24 @@ public class Player : MonoBehaviour
     private  PlayerSpriteRenderer activeRenderer;
     private CapsuleCollider2D capsuleCollider;
     private DeathAnimation deathAnimation;
+    private AudioSource audioSource;
 
     public bool IsBig => bigRenderer.enabled;
     public bool IsSmall => smallRenderer.enabled;
     public bool IsDead => deathAnimation.enabled;
     public bool IsStartPower { get; private set; }
 
+    public AudioClip GrowClip;
+    public AudioClip ShrinkClip;
+    public AudioClip DieClip;
+    public AudioClip StarPowerClip;
+
+
     private void Awake()
     {
         deathAnimation = GetComponent<DeathAnimation>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+        audioSource = GetComponent<AudioSource>();
         activeRenderer = smallRenderer;
     }
 
@@ -46,6 +54,9 @@ public class Player : MonoBehaviour
         capsuleCollider.offset = new Vector2(0, 0f);
 
         StartCoroutine(ScaleAnimation());
+
+        audioSource.clip = AudioManager.Instance.ShrinkClip;
+        audioSource.Play();
     }
 
     public void Grow()
@@ -62,6 +73,9 @@ public class Player : MonoBehaviour
         capsuleCollider.offset = new Vector2(0, 0.5f);
         
         StartCoroutine(ScaleAnimation());
+
+        audioSource.clip = AudioManager.Instance.GrowClip;
+        audioSource.Play();
     }
 
     private IEnumerator ScaleAnimation()
@@ -100,6 +114,9 @@ public class Player : MonoBehaviour
     public IEnumerator StarPowerAnimation(float duration = 10f)
     {
         IsStartPower = true;
+
+        audioSource.clip = AudioManager.Instance.DieClip;
+        audioSource.Play();
         
         PlayerMovement playerMovement = gameObject.GetComponent<PlayerMovement>();
         playerMovement.moveSpeed += 4;
@@ -121,6 +138,7 @@ public class Player : MonoBehaviour
         playerMovement.moveSpeed -= 4;
         activeRenderer.spriteRenderer.color = Color.white;
         IsStartPower = false;
+        audioSource.Stop();
     }
 
     private void Die()
@@ -130,5 +148,8 @@ public class Player : MonoBehaviour
         deathAnimation.enabled = true;
 
         GameManager.Instance.ResetLevel(3f);
+
+        audioSource.clip = AudioManager.Instance.DieClip;
+        audioSource.Play();
     }
 }

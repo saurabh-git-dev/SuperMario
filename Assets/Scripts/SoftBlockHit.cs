@@ -11,6 +11,13 @@ public class SoftBlockHit : MonoBehaviour
 
     public GameObject item;
     public GameObject BreakGameObject;
+    private AudioSource audioSource;
+    public AudioClip bumpSound;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -44,13 +51,11 @@ public class SoftBlockHit : MonoBehaviour
         else
         {
             StartCoroutine(Bounce());
+
+            audioSource.clip = bumpSound;
+            audioSource.Play();
         }
 
-    }
-
-    private IEnumerator Break()
-    {
-        yield return null;
     }
 
     private IEnumerator Bounce()

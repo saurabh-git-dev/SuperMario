@@ -4,10 +4,21 @@ using UnityEngine;
 
 public class BrickBreak : MonoBehaviour
 {
+    public AudioClip breakSound;
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void Start()
     {
         Debug.Log("Break");
         StartCoroutine(Break());
+        
+        audioSource.clip = breakSound;
+        audioSource.Play();
     }
 
     private IEnumerator Break()

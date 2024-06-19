@@ -10,9 +10,14 @@ public class HardBlockHit : MonoBehaviour
 
     public GameObject item;
     
+    private AudioSource audioSource;
+
+    public AudioClip bumpSound;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -38,6 +43,9 @@ public class HardBlockHit : MonoBehaviour
             }
 
             MaxHits--;
+
+            audioSource.clip = bumpSound;
+            audioSource.Play();
         }
     }
 

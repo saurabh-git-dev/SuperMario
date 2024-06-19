@@ -3,9 +3,20 @@ using UnityEngine;
 
 public class BlockItem : MonoBehaviour
 {
+    public AudioClip itemAppearSound;
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void Start()
     {
         StartCoroutine(Animate());
+
+        audioSource.clip = itemAppearSound;
+        audioSource.Play();
     }
     
     private IEnumerator Animate()

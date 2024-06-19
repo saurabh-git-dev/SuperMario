@@ -3,7 +3,12 @@ guid: 6e9f85d901e3988409233aa36c158a20
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - emptyBlock: {instanceID: 0}
+  - item: {instanceID: 0}
+  - BreakGameObject: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - bumpSound: {fileID: 8300000, guid: e228fed56b70b0046b8d6fd4d459b73c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

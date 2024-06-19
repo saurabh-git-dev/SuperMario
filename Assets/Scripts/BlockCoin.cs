@@ -3,11 +3,23 @@ using UnityEngine;
 
 public class BlockCoin : MonoBehaviour
 {
+    private AudioSource audioSource;
+
+    public AudioClip coinSound;
+
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void Start()
     {
         GameManager.Instance.AddCoin();
 
         StartCoroutine(Bounce());
+
+        audioSource.clip = coinSound;
+        audioSource.Play();
     }
 
     private IEnumerator Bounce()
